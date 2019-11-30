@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 public class HomeController extends BaseController {
 
@@ -13,6 +15,17 @@ public class HomeController extends BaseController {
     @PreAuthorize("isAnonymous()")
     public ModelAndView index(){
         return super.view("/home/index");
+    }
+
+    @GetMapping("/home")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView getHome() {
+        return super.view("home/home");
+    }
+
+    @GetMapping("/login")
+    public ModelAndView getLoginAfterReg() {
+        return super.redirect("/home");
     }
 
 }

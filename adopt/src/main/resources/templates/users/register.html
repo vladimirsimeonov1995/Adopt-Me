@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="~{fragments/head}"/>
+<body class="register">
+<header>
+    <th:block th:include="~{fragments/header}"/>
+    <main>
+        <main>
+            <div class="container mt-3 bottom-buffer-20 col-xs-3">
+                <h1>Register</h1>
+                <form class="form" th:action="@{/users/register}" th:method="post">
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="username" class="col-sm2 col-form-label">Username</label>
+                            <input type="text" class="form-control register-input" id="username" placeholder="Username..." name="username">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="password" class="col-sm2 col-form-label">Password</label>
+                            <input type="password" class="form-control register-input" id="password" placeholder="Password..." name="password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="confirmPassword" class="col-sm2 col-form-label">Confirm Password</label>
+                            <input type="password" class="form-control register-input" id="confirmPassword" placeholder="Confirm password..." name="confirmPassword">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="firstName" class="col-sm2 col-form-label">First Name</label>
+                            <input type="text" class="form-control register-input" id="firstName" placeholder="First name..." name="firstName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="lastName" class="col-sm2 col-form-label">Last Name</label>
+                            <input type="text" class="form-control register-input" id="lastName" placeholder="Last name..." name="lastName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="email" class="col-sm2 col-form-label">Email</label>
+                            <input type="email" class="form-control register-input" id="email" placeholder="Email..." name="email">
+                        </div>
+                    </div>
+                    <div class="button-holder d-flex col-xs-5">
+                        <button class="btn btn-info text-white mb-3 btn-register" type="submit">Register</button>
+                    </div>
+                </form>
+                <div class="container mt-5 bottom-buffer-20 col-xs-3">
+                    <div class="row bottom-buffer-20">
+                        <div class="col-xs-5">
+                            <a class="btn btn-info text-blue mb-3 btn-register" th:href="@{/login}">You already have account? Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </main>
+    <th:block th:include="~{fragments/footer}"/>
+</body>
+</html>

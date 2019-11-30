@@ -5,8 +5,6 @@ body {
     background-size: cover;
     background-color: #464646;
 }
-
-
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
@@ -35,3 +33,98 @@ body {
 .bottom-buffer-20 {
     margin-bottom: 20px;
 }
+
+
+
+
+/**
+REGISTER ....................................................................................
+ */
+.register {
+    background-image: url("/images/register-background.jpg");
+}
+
+.register-input {
+    background: transparent;
+    border: 1px solid white;
+}
+
+.register-input::-webkit-input-placeholder {
+    color: black;
+}
+
+.register-input:-moz-placeholder {
+    color: black;
+}
+
+.register-input::-moz-placeholder {
+    color: black;
+}
+
+.register-input:-ms-input-placeholder {
+    color: black;
+}
+
+.register-input::-ms-input-placeholder {
+    color: black;
+}
+
+.btn-register {
+    font-size: 18px;
+    color: black;
+    padding: 12px 22px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid white;
+}
+
+/**
+----------------------------------------------------------------------------------------------
+ */
+
+
+/**
+LOGIN ------------------------------------------------------------------------------------
+ */
+.login-background {
+    background-image: url("/images/login-background.jpg");
+}
+
+.login-input {
+    background: transparent;
+}
+
+.login-input::-webkit-input-placeholder {
+    color: white;
+}
+
+.login-input:-moz-placeholder {
+    color: white;
+}
+
+.login-input::-moz-placeholder {
+    color: white;
+}
+
+.login-input:-ms-input-placeholder {
+    color: white;
+}
+
+.login-input::-ms-input-placeholder {
+    color: white;
+}
+
+.btn-login {
+    font-size: 18px;
+    color: black;
+    padding: 12px 22px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid white;
+}
+
+/**
+--------------------------------------------------------------------------------------------
+ */
+
+

@@ -1,0 +1,45 @@
+<th:block>
+    <th:block sec:authorize="isAnonymous()">
+    <nav class="navbar navbar-expand-lg">
+        <a class="nav-brand text-white active h5" th:href="@{/}">
+            <img src="/images/logo.jpg" class="text-left" width="120" height="60"></a>
+        <div class="collapse navbar-collapse d-flex justify-content-end">
+            <ul class="navbar-nav row">
+                <li class="nav-item active">
+                    <a class="nav-link text-blue active font-weight-bold" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-blue active font-weight-bold" th:href="@{/users/login}">Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-blue active font-weight-bold" th:href="@{/users/register}">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    </th:block>
+    <th:block sec:authorize="isAuthenticated()">
+        <nav class="navbar navbar-expand-lg">
+            <a class="nav-brand text-white active h5" th:href="@{/home}">
+                <img src="/images/logo.jpg" class="text-left" width="120" height="60"></a>
+            <div class="collapse navbar-collapse d-flex justify-content-end">
+                <ul class="navbar-nav row">
+                    <li class="nav-item active">
+                        <a class="nav-link text-blue active font-weight-bold" th:href="@{/home}">Home</a>
+                    </li>
+                        <a class="nav-link text-blue active font-weight-bold" th:href="@{/users/profile/{username}(username=${username})}">My Profile</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link text-blue active font-weight-bold" th:href="@{/users/profile/edit/{username}(username=${username})}">Edit Profile</a>
+                    </li>
+                    <li class="nav-item-active">
+                        <form action="/logout?login" method="post">
+                            <input type="hidden" name="_csrf" value="80417983-fe8b-45c7-963e-31f6915a1560">
+                            <a class="nav-link text-blue active font-weight-bold" th:href="@{/logout}">Logout</a>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </th:block>
+</th:block>

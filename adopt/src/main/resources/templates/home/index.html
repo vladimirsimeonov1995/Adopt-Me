@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="~{fragments/head}"/>
+<body class="indexContainer">
+<th:block th:include="~{fragments/header}"/>
+
+<main>
+    <div class="container">
+        <h1>Welcome to Adopt Me</h1>
+        <hr class="my-3"/>
+        <h3><a th:href="@{/users/login}">Login</a> if you have an account or
+            <a th:href="@{/users/register}">Register</a> now and help the animals to find their new home.
+        </h3>
+        <hr class="my-3"/>
+    </div>
+</main>
+<th:block th:include="~{fragments/footer}"/>
+</body>
+</html>

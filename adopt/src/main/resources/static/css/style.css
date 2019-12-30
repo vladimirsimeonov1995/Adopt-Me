@@ -128,3 +128,70 @@ LOGIN --------------------------------------------------------------------------
  */
 
 
+ /**
+ RESCUE ---------------------------------------------------------------------------
+  */
+
+.rescue {
+    background-color: white;
+}
+
+
+.rescue-input {
+    background: transparent;
+    border: 1px solid white;
+}
+
+.rescue-input::-webkit-input-placeholder {
+    color: black;
+}
+
+.rescue-input:-moz-placeholder {
+    color: black;
+}
+
+.rescue-input::-moz-placeholder {
+    color: black;
+}
+
+.rescue-input:-ms-input-placeholder {
+    color: black;
+}
+
+.rescue-input::-ms-input-placeholder {
+    color: black;
+}
+
+.btn-rescue {
+    font-size: 18px;
+    color: black;
+    padding: 12px 22px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid white;
+}
+
+
+/**
+--------------------------------------------------------------------------------------------
+ */
+
+
+ /**
+  RESCUE ---------------------------------------------------------------------------
+   */
+
+ .animal-info-background {
+     background-image: url("/images/animal-info-background.jpg");
+ }
+
+
+
+
+ /**
+ --------------------------------------------------------------------------------------------
+  */
+
+
+
+

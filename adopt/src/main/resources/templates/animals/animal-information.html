@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="~{fragments/head}"/>
+<body class="animal-info-background">
+<th:block th:include="~{fragments/header}"/>
+<main>
+    <h1 class="text-center text-black" th:text="'name: ' + ${model.name}"></h1>
+    <div class="text-center">
+        <img th:src="${model.imageUrl}" width="360">
+    </div>
+    <div class="text-center text-black">
+        <span th:text="'age: ' + ${model.approximatelyAge}"></span>
+    </div>
+    <div class="text-center text-black">
+        <span th:text="'color: ' + ${model.color}"></span>
+    </div>
+    <div class="text-center text-black">
+        <span th:text="${model.description}"></span>
+    </div>
+    <div class="text-center text-black">
+        <a th:href="@{/users/profile/{id}(id=${model.founderId})}" class="btn btn-success font-weight-bold text-white">Founder Profile</a>
+    </div>
+</main>
+</body>
+<th:block th:include="~{fragments/footer}"/>
+</html>

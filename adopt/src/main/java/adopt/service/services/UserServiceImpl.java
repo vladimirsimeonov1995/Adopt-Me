@@ -2,6 +2,7 @@ package adopt.service.services;
 
 import adopt.data.models.User;
 import adopt.data.repositories.UserRepository;
+import adopt.service.models.AnimalServiceModel;
 import adopt.service.models.UserServiceModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,14 @@ import java.util.LinkedHashSet;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository usersRepository;
-    private final ModelMapper mapper;
+    private final ModelMapper modelMapper;
     private final RoleService roleService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserServiceImpl(UserRepository usersRepository, ModelMapper mapper, RoleService roleService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.usersRepository = usersRepository;
-        this.mapper = mapper;
+        this.modelMapper = mapper;
         this.roleService = roleService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -39,9 +40,9 @@ public class UserServiceImpl implements UserService {
             userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_USER"));
         }
         
-        User user = mapper.map(userServiceModel, User.class);
+        User user = modelMapper.map(userServiceModel, User.class);
         user.setPassword(this.bCryptPasswordEncoder.encode(userServiceModel.getPassword()));
-        return this.mapper.map(this.usersRepository.saveAndFlush(user), UserServiceModel.class);
+        return this.modelMapper.map(this.usersRepository.saveAndFlush(user), UserServiceModel.class);
     }
 
     @Override
@@ -51,8 +52,21 @@ public class UserServiceImpl implements UserService {
         if(user == null) {
             return null;
         }else {
-            return this.mapper.map(user, UserServiceModel.class);
+            return this.modelMapper.map(user, UserServiceModel.class);
         }
+    }
+
+    @Override
+    public UserServiceModel findUserById(String id) {
+        User entity = this.usersRepository.findById(id).orElse(null);
+
+        if(entity == null) {
+            throw new IllegalArgumentException("No such user");
+        }
+
+        UserServiceModel userServiceModel = this.modelMapper.map(entity, UserServiceModel.class);
+
+        return userServiceModel;
     }
 
     @Override

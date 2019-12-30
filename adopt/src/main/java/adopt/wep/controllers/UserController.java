@@ -3,16 +3,16 @@ package adopt.wep.controllers;
 import adopt.service.models.UserServiceModel;
 import adopt.service.services.UserService;
 import adopt.wep.controllers.base.BaseController;
+import adopt.wep.models.UserProfileViewModel;
 import adopt.wep.models.UserRegisterModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/users")
@@ -50,6 +50,26 @@ public class UserController extends BaseController {
     @PreAuthorize("isAnonymous()")
     public ModelAndView login(){
         return super.view("/users/login");
+    }
+
+    @GetMapping("/profile/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView profile(@PathVariable String id, ModelAndView modelAndView){
+
+        UserServiceModel userServiceModel = this.userService.findUserById(id);
+        UserProfileViewModel model = this.modelMapper.map(userServiceModel, UserProfileViewModel.class);
+        modelAndView.addObject("model", model);
+
+        return super.view("/users/profile", modelAndView);
+    }
+
+    @GetMapping("/profile")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView myProfile(Principal principal){
+        String username = principal.getName();
+        UserServiceModel userServiceModel = this.userService.findUserByUsername(username);
+
+        return super.redirect("/users/profile/" + userServiceModel.getId());
     }
 
 }

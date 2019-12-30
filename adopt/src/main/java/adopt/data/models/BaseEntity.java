@@ -1,7 +1,5 @@
 package adopt.data.models;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -10,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-@Getter
-@Setter
 public abstract class BaseEntity {
 
     @Id
@@ -23,4 +19,11 @@ public abstract class BaseEntity {
     protected BaseEntity() {
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

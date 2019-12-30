@@ -1,20 +1,16 @@
-package adopt.service.models;
+package adopt.wep.models;
 
 import java.util.List;
-import java.util.Set;
 
-public class UserServiceModel extends BaseServiceModel {
+public class UserProfileViewModel {
 
-    private String id;
     private String username;
-    private String password;
     private String firstName;
     private String lastName;
     private String email;
-    private Set<RoleServiceModel> authorities;
-    private List<AnimalServiceModel> rescuedAnimals;
+    private List<AnimalUserProfileViewModel> rescuedAnimals;
 
-    public UserServiceModel() {
+    public UserProfileViewModel() {
     }
 
     public String getUsername() {
@@ -23,14 +19,6 @@ public class UserServiceModel extends BaseServiceModel {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getFirstName() {
@@ -57,19 +45,11 @@ public class UserServiceModel extends BaseServiceModel {
         this.email = email;
     }
 
-    public Set<RoleServiceModel> getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(Set<RoleServiceModel> authorities) {
-        this.authorities = authorities;
-    }
-
-    public List<AnimalServiceModel> getRescuedAnimals() {
+    public List<AnimalUserProfileViewModel> getRescuedAnimals() {
         return rescuedAnimals;
     }
 
-    public void setRescuedAnimals(List<AnimalServiceModel> rescuedAnimals) {
+    public void setRescuedAnimals(List<AnimalUserProfileViewModel> rescuedAnimals) {
         this.rescuedAnimals = rescuedAnimals;
     }
 }

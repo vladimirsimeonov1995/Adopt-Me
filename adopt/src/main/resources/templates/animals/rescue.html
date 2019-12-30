@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="~{fragments/head}"/>
+<body class="rescue">
+<header>
+    <th:block th:include="~{fragments/header}"/>
+    <main>
+        <main>
+            <div class="container w-25 mx-auto">
+                <h1>Rescue an animal</h1>
+                <hr>
+                <form class="form w-25 mx-auto" th:action="@{/animals/rescue}" th:method="post" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="species" class="ctext-black d-flex justify-content-center">Species</label>
+                            <select id="species" name="species">
+                                <option th:each="specie : ${T(adopt.data.models.enums.Species).values()}"
+                                        th:value="${specie}"
+                                        th:text="${specie.getFieldDescription()}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="name" class="text-black d-flex justify-content-center">Name</label>
+                            <input type="text" class="form-control rescue-input" id="name" placeholder="Name..."
+                                   name="name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="approximatelyAge" class="text-black d-flex justify-content-center">Approximately age</label>
+                            <input type="number" class="form-control rescue-input" id="approximatelyAge"
+                                   placeholder="Approximately age..."
+                                   name="approximatelyAge">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="color" class="text-black d-flex justify-content-center">Color</label>
+                            <select id="color" name="color">
+                                <option th:each="color : ${T(adopt.data.models.enums.Color).values()}"
+                                        th:value="${color}"
+                                        th:text="${color.getFieldDescription()}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label for="description" class="text-black d-flex justify-content-center">Description</label>
+                            <textarea class="form-control rescue-input" id="description" placeholder="Description..."
+                                      name="description"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="imageUrl" class="btn btn-block btn-primary">Browse&hellip;</label>
+                            <input type="file" style="display: none;" id="imageUrl" name="imageUrl">
+                    </div>
+                    <hr>
+                    <div class="form-group row">
+                        <div class="button-holder d-flex col-xs-5">
+                            <button class="btn btn-info text-black mb-3 btn-rescue" type="submit">Rescue
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </main>
+    <th:block th:include="~{fragments/footer}"/>
+</body>
+</html>

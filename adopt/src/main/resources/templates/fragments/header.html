@@ -30,11 +30,27 @@
                     <li>
                         <a class="nav-link text-blue active font-weight-bold" th:href="@{/animals/rescue}">Rescue</a>
                     </li>
+<!--                    <th:block>-->
+<!--                        <li class="nav-item active">-->
+<!--                            <div class="dropdown show">-->
+<!--                                <a class="nav-link text-blue active font-weight-bold dropdown-toggle" href="#"-->
+<!--                                   role="button"-->
+<!--                                   id="profileDropdown"-->
+<!--                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                    Profile-->
+<!--                                </a>-->
+<!--                                <div class="dropdown-menu" aria-labelledby="profileDropdown">-->
+<!--                                    <a class="dropdown-item" th:href="@{/users/profile/{id}(id=${username})}">My Profile</a>-->
+<!--                                    <a class="dropdown-item" th:href="@{/users/edit-profile}">Edit Profile</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </li>-->
+<!--                    </th:block>-->
                     <li>
-                        <a class="nav-link text-blue active font-weight-bold" th:href="@{/users/profile/{username}(username=${username})}">My Profile</a>
+                        <a class="nav-link text-blue active font-weight-bold" th:href="@{/users/profile/{id}(id=${username})}">My Profile</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link text-blue active font-weight-bold" th:href="@{/users/profile/edit/{username}(username=${username})}">Edit Profile</a>
+                        <a class="nav-link text-blue active font-weight-bold" th:href="@{/users/edit-profile}">Edit Profile</a>
                     </li>
                     <li class="nav-item-active">
                         <form action="/logout?login" method="post">

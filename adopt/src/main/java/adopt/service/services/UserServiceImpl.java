@@ -70,6 +70,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserServiceModel editUserProfile(UserServiceModel model, String oldPassword) {
+        User user = this.usersRepository.findByUsername(model.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("Username not found!"));
+
+        if (!this.bCryptPasswordEncoder.matches(oldPassword, user.getPassword())){
+            throw new IllegalArgumentException("Incorrect password!");
+        }
+
+        if (model.getPassword() != null) {
+            user.setPassword(this.bCryptPasswordEncoder.encode(model.getPassword()));
+        }
+
+        user.setEmail(model.getEmail());
+
+        UserServiceModel savedModel = this.modelMapper.map(this.usersRepository.saveAndFlush(user), UserServiceModel.class);
+
+        return savedModel;
+
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println();
 

@@ -33,6 +33,7 @@ public class AnimalServiceImpl implements AnimalService {
         entityToBeSaved.setFounder(this.modelMapper.map(this.userService.findUserByUsername(username), User.class));
 
         AnimalServiceModel savedModel = null;
+
         try {
             savedModel = this.modelMapper.map(this.animalRepository.saveAndFlush(entityToBeSaved), AnimalServiceModel.class);
         } catch (Exception e) {

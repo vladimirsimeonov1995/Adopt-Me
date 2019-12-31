@@ -11,4 +11,5 @@ public interface UserService extends UserDetailsService {
 
     UserServiceModel findUserById(String id);
 
+    UserServiceModel editUserProfile(UserServiceModel model, String oldPassword);
 }

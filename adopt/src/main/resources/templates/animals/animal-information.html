@@ -21,6 +21,9 @@
     <div class="text-center text-black">
         <a th:href="@{/users/profile/{id}(id=${model.founderId})}" class="btn btn-success font-weight-bold text-white">Founder Profile</a>
     </div>
+    <div class="text-center text-black">
+        <a th:href="@{/animals/adopt/{id}(id=${model.id})}" class="btn btn-success font-weight-bold text-white">Adopt</a>
+    </div>
 </main>
 </body>
 <th:block th:include="~{fragments/footer}"/>

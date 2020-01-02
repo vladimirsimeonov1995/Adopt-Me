@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class AnimalInfoViewModel {
 
+    private String id;
     private String species;
     private String name;
     private Integer approximatelyAge;
@@ -14,6 +15,14 @@ public class AnimalInfoViewModel {
     private String founderId;
 
     public AnimalInfoViewModel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getSpecies() {

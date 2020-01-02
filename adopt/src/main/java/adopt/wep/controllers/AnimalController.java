@@ -4,6 +4,8 @@ import adopt.service.models.AnimalServiceModel;
 import adopt.service.services.AnimalService;
 import adopt.service.services.CloudinaryService;
 import adopt.wep.controllers.base.BaseController;
+import adopt.wep.models.AnimalAdoptListViewModel;
+import adopt.wep.models.AnimalAdoptViewModel;
 import adopt.wep.models.AnimalInfoViewModel;
 import adopt.wep.models.AnimalRescueModel;
 import org.modelmapper.ModelMapper;
@@ -15,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/animals")
@@ -48,10 +52,10 @@ public class AnimalController extends BaseController {
         String username = principal.getName();
         AnimalServiceModel savedAnimal = this.animalService.rescue(animalServiceModel, username);
 
-        return super.redirect("/animals/" + savedAnimal.getId());
+        return super.redirect("/animals/information/" + savedAnimal.getId());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/information/{id}")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView animalInformation(@PathVariable String id, ModelAndView modelAndView){
 
@@ -64,5 +68,22 @@ public class AnimalController extends BaseController {
 
         return super.view("animals/animal-information", modelAndView);
     }
+
+    @GetMapping("/adopt")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView allAnimalsForAdoption(ModelAndView modelAndView){
+
+        List<AnimalAdoptListViewModel> models = this.animalService
+                .findAllAnimalsForAdoption()
+                .stream()
+                .map(a -> this.modelMapper.map(a, AnimalAdoptListViewModel.class))
+                .collect(Collectors.toList());
+
+        modelAndView.addObject("models", models);
+
+        return super.view("animals/adopting-list", modelAndView);
+    }
+
+
 
 }

@@ -17,6 +17,16 @@ public class UserServiceModel extends BaseServiceModel {
     public UserServiceModel() {
     }
 
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }

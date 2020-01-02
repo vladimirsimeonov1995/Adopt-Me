@@ -17,6 +17,7 @@ public class Animal extends BaseEntity {
      *     private String description;
      *     private String imageUrl;
      *     private User founder;
+     *     private boolean isAdopted
      */
 
     @Column(name = "species", nullable = false)
@@ -42,6 +43,9 @@ public class Animal extends BaseEntity {
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "founder_id", referencedColumnName = "id")
     private User founder;
+
+    @Column(name = "is_adopted", columnDefinition = "tinyint(1) default 0")
+    private boolean isAdopted;
 
     public Animal() {
     }
@@ -100,5 +104,13 @@ public class Animal extends BaseEntity {
 
     public void setFounder(User founder) {
         this.founder = founder;
+    }
+
+    public boolean isAdopted() {
+        return isAdopted;
+    }
+
+    public void setAdopted(boolean adopted) {
+        isAdopted = adopted;
     }
 }

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AnimalServiceImpl implements AnimalService {
@@ -58,5 +60,16 @@ public class AnimalServiceImpl implements AnimalService {
 
         return animalServiceModel;
 
+    }
+
+    @Override
+    public List<AnimalServiceModel> findAllAnimalsForAdoption() {
+        List<AnimalServiceModel> animalsForAdoption = this.animalRepository
+                .findAllByIsAdopted(false)
+                .stream()
+                .map(e -> this.modelMapper.map(e, AnimalServiceModel.class))
+                .collect(Collectors.toList());
+
+        return animalsForAdoption;
     }
 }

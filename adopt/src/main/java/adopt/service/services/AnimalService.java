@@ -3,6 +3,7 @@ package adopt.service.services;
 import adopt.service.models.AnimalServiceModel;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface AnimalService {
 
@@ -10,4 +11,5 @@ public interface AnimalService {
 
     AnimalServiceModel findAnimalById(String id);
 
+    List<AnimalServiceModel> findAllAnimalsForAdoption();
 }

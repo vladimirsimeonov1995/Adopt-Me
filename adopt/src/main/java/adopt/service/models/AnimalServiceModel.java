@@ -12,6 +12,7 @@ public class AnimalServiceModel {
     private String description;
     private String imageUrl;
     private UserServiceModel founder;
+    private boolean isAdopted;
 
     public AnimalServiceModel() {
     }
@@ -78,5 +79,13 @@ public class AnimalServiceModel {
 
     public void setFounder(UserServiceModel founder) {
         this.founder = founder;
+    }
+
+    public boolean isAdopted() {
+        return isAdopted;
+    }
+
+    public void setAdopted(boolean adopted) {
+        isAdopted = adopted;
     }
 }

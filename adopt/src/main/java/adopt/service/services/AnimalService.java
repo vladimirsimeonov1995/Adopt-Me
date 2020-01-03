@@ -12,4 +12,6 @@ public interface AnimalService {
     AnimalServiceModel findAnimalById(String id);
 
     List<AnimalServiceModel> findAllAnimalsForAdoption();
+
+    void makeAnimalInAdoptedRequest(AnimalServiceModel animalServiceModel);
 }

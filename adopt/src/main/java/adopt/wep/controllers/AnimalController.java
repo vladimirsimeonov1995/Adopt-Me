@@ -5,7 +5,6 @@ import adopt.service.services.AnimalService;
 import adopt.service.services.CloudinaryService;
 import adopt.wep.controllers.base.BaseController;
 import adopt.wep.models.AnimalAdoptListViewModel;
-import adopt.wep.models.AnimalAdoptViewModel;
 import adopt.wep.models.AnimalInfoViewModel;
 import adopt.wep.models.AnimalRescueModel;
 import org.modelmapper.ModelMapper;

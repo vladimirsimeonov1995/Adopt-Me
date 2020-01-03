@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
             userServiceModel.getAuthorities().add(this.roleService.findByAuthority("ROLE_USER"));
         }
-        
+
         User user = modelMapper.map(userServiceModel, User.class);
         user.setPassword(this.bCryptPasswordEncoder.encode(userServiceModel.getPassword()));
         return this.modelMapper.map(this.usersRepository.saveAndFlush(user), UserServiceModel.class);
@@ -49,18 +49,19 @@ public class UserServiceImpl implements UserService {
     public UserServiceModel findUserByUsername(String username) {
         User user = this.usersRepository.findByUsername(username).orElse(null);
 
-        if(user == null) {
-            return null;
-        }else {
-            return this.modelMapper.map(user, UserServiceModel.class);
+        if (user == null) {
+            throw new IllegalArgumentException("No such user!");
         }
+
+        return this.modelMapper.map(user, UserServiceModel.class);
+
     }
 
     @Override
     public UserServiceModel findUserById(String id) {
         User entity = this.usersRepository.findById(id).orElse(null);
 
-        if(entity == null) {
+        if (entity == null) {
             throw new IllegalArgumentException("No such user");
         }
 
@@ -71,10 +72,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserServiceModel editUserProfile(UserServiceModel model, String oldPassword) {
+
         User user = this.usersRepository.findByUsername(model.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found!"));
 
-        if (!this.bCryptPasswordEncoder.matches(oldPassword, user.getPassword())){
+        if (!this.bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
             throw new IllegalArgumentException("Incorrect password!");
         }
 
@@ -92,7 +94,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println();
 
         return this.usersRepository
                 .findByUsername(username)

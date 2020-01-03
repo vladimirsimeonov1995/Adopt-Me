@@ -2,8 +2,8 @@ package adopt.wep.controllers;
 
 import adopt.service.models.UserServiceModel;
 import adopt.service.services.UserService;
-import adopt.validation.user.UserEditValidator;
-import adopt.validation.user.UserRegisterValidator;
+import adopt.utils.validation.user.UserEditValidator;
+import adopt.utils.validation.user.UserRegisterValidator;
 import adopt.wep.controllers.base.BaseController;
 import adopt.wep.models.UserEditModel;
 import adopt.wep.models.UserProfileViewModel;
